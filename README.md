@@ -10,7 +10,7 @@
 
 | 文件 | 大小 | SHA256 |
 |---|---|---|
-| `Uplink.exe` | 1,909,760 B | `015DC0963D900BC7F2D84DE5536F8AA252223C34AB27F60941F71E9D65BCDF2B` |
+| `Uplink.exe` | 1,908,736 B | `015DC0963D900BC7F2D84DE5536F8AA252223C34AB27F60941F71E9D65BCDF2B` |
 | `fonts.dat` | 2,057,394 B | `657A164775A46CBD6F9A04FD766BCC495A8FEB841AC09420D362920E0694998A` |
 
 - `Uplink.exe` —— 重新编译的游戏本体，内含：UTF-8 中文渲染、简体中文文本、以及为兼容重编译版而关闭的完整性自检。
@@ -75,7 +75,7 @@ powershell -ExecutionPolicy Bypass -File install_zh.ps1 -Action verify
 
 **换行测量**：`wordwraptext()` 原本以「ASCII 平均字宽」为预算单位、中文记 2 单位，但实际中文字宽约为 1.4 倍，导致每行超宽；现改为**逐字符实测字宽**累加，并且绘制时左右各留 10px 内边距（原先文字画在 `x+10` 却按整宽换行，恒定右溢 10px）。
 
-**翻译来源**：走官方本地化管线 `tools/language/translate.pl` + `strings.txt`，目前 **2431 条**（占可翻译条目 73%），覆盖界面标签、教程全文、状态消息、邮件、新闻、任务简报、软件与硬件说明等。
+**翻译来源**：走官方本地化管线 `tools/language/translate.pl` + `strings.txt`，目前 **2504 条**（占可翻译条目 75.2%），覆盖界面标签、教程全文、状态消息、邮件、新闻、任务简报、软件与硬件说明等。
 
 **为什么有些地方仍是英文**：Uplink 把**字符串本身当作数据键**使用，例如 `GetComputer("International Social Security Database")`、`GetHardwareUpgrade("CPU ( 20 Ghz )")`、记录库查询 `"Personal Status = Deceased"`、输入框占位 `"Fill this in"`。这类字符串一旦翻译，运行时按名字反查就会失败。因此建立了**禁译清单**（`Get*`/`Find*`/`strcmp`/`GetRandomRecord`/`IsHWInstalled` 的参数、`game/data/` 世界数据表全量、含查询操作符的模板等），这些保持英文以保证游戏正常运行。另有约 1976 条被官方标记为「无需翻译」（代码片段、调试串、正则、路径）。
 
