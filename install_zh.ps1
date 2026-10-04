@@ -9,8 +9,8 @@ $Here=Split-Path -Parent $MyInvocation.MyCommand.Path
 $Backup=Join-Path $GameDir '_zh_backup'
 $ManifestPath=Join-Path $Backup 'manifest.json'
 $Files=@(
-    [pscustomobject]@{Name='Uplink.exe';Sha='015DC0963D900BC7F2D84DE5536F8AA252223C34AB27F60941F71E9D65BCDF2B'},
-    [pscustomobject]@{Name='fonts.dat';Sha='657A164775A46CBD6F9A04FD766BCC495A8FEB841AC09420D362920E0694998A'}
+    [pscustomobject]@{Name='Uplink.exe';Sha='0b6db6ccf10d95d1556801f38ed596b43dc8bc3a17b923332667d19d20a30c77'},
+    [pscustomobject]@{Name='fonts.dat';Sha='657a164775a46cbd6f9a04fd766bcc495a8feb841ac09420d362920e0694998a'}
 )
 function Get-Sha256([string]$p) {(Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash}
 function Leaf([string]$p) {if (-not (Test-Path -LiteralPath $p -PathType Leaf)) {throw "缺少文件：$p"}; if ((Get-Item -LiteralPath $p).Attributes -band [IO.FileAttributes]::ReparsePoint) {throw "拒绝重解析路径：$p"}}
