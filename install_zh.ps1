@@ -9,7 +9,7 @@ $Here=Split-Path -Parent $MyInvocation.MyCommand.Path
 $Backup=Join-Path $GameDir '_zh_backup'
 $ManifestPath=Join-Path $Backup 'manifest.json'
 $Files=@(
-    [pscustomobject]@{Name='Uplink.exe';Sha='0b6db6ccf10d95d1556801f38ed596b43dc8bc3a17b923332667d19d20a30c77'},
+    [pscustomobject]@{Name='Uplink.exe';Sha='dfda7c374492566d97596dab6e18342d30425d42a9eb60a716bab1af128a2efa'},
     [pscustomobject]@{Name='fonts.dat';Sha='657a164775a46cbd6f9a04fd766bcc495a8feb841ac09420d362920e0694998a'}
 )
 function Get-Sha256([string]$p) {(Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash}
